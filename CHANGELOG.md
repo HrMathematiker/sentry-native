@@ -4,6 +4,7 @@
 
 **Features**:
 
+- Cache consent-revoked envelopes to disk when `cache_keep` or `http_retry` is enabled, instead of discarding them. With `http_retry`, the cached envelopes are sent automatically once consent is given. ([#1542](https://github.com/getsentry/sentry-native/pull/1542))
 - Add `before_screenshot` hook. ([#1641](https://github.com/getsentry/sentry-native/pull/1641))
 
 **Fixes**:
