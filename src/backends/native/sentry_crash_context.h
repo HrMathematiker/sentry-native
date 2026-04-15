@@ -273,6 +273,7 @@ typedef struct {
     bool debug_enabled; // Debug logging enabled in parent process
     bool attach_screenshot; // Screenshot attachment enabled in parent process
     bool cache_keep;
+    bool require_user_consent;
 
     // Platform-specific crash context
 #if defined(SENTRY_PLATFORM_LINUX) || defined(SENTRY_PLATFORM_ANDROID)

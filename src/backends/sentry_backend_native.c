@@ -192,6 +192,7 @@ native_backend_startup(
     ctx->debug_enabled = options->debug;
     ctx->attach_screenshot = options->attach_screenshot;
     ctx->cache_keep = options->cache_keep;
+    ctx->require_user_consent = options->require_user_consent;
 
     // Set up event and breadcrumb paths
     sentry_path_t *run_path = options->run->run_path;
@@ -938,7 +939,8 @@ native_backend_except(sentry_backend_t *backend, const sentry_ucontext_t *uctx)
                         if (disk_transport) {
                             // sentry__capture_envelope takes ownership of
                             // envelope
-                            sentry__capture_envelope(disk_transport, envelope);
+                            sentry__capture_envelope(
+                                disk_transport, envelope, options);
                             sentry__transport_dump_queue(
                                 disk_transport, options->run);
                             sentry_transport_free(disk_transport);
